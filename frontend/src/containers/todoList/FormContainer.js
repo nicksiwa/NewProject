@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import { FormComponent } from '../../components/todoList/FormComponent';
-import { createTodo, deleteTodo } from '../../actions/todo';
+import { createTodo } from '../../actions/todo';
 import { validation } from '../../components/todoList/helper/validation';
 
 const FormComponentWithReduxForm = reduxForm({
@@ -18,8 +18,7 @@ const FormContainer = props => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  onSubmit: data => dispatch(createTodo(data)),
-  onDelete: id => dispatch(deleteTodo(id))
+  onSubmit: data => dispatch(createTodo(data))
 });
 
 export default connect(
