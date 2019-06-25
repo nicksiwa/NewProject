@@ -1,13 +1,16 @@
 import React from 'react';
-import TodoFormContainer from './containers/todoList/FormContainer';
-import TodoListContainer from './containers/todoList/ListContainer';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import ApplicationLayout from './layouts/ApplicationLayout';
+import AuthenticationLayout from './layouts/AuthenticationLayout';
 
 function App() {
   return (
-    <div className="app">
-      <TodoFormContainer />
-      <TodoListContainer />
-    </div>
+    <Router>
+      <div>
+        <Route exact path="/" component={ApplicationLayout} />
+        <Route path="/login" component={AuthenticationLayout} />
+      </div>
+    </Router>
   );
 }
 
