@@ -9,6 +9,8 @@ import com.homse.hombackend.model.User;
 import com.homse.hombackend.repository.RoleRepository;
 import com.homse.hombackend.repository.UserRepository;
 import com.homse.hombackend.security.jwt.JwtProvider;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +28,7 @@ import java.util.Set;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
+@Api(value = "/api/auth", description = "provide sign-in and sign-up endpoint", tags = { "Authentication" })
 public class AuthRestAPIs {
 
     @Autowired
@@ -43,6 +46,7 @@ public class AuthRestAPIs {
     @Autowired
     JwtProvider jwtProvider;
 
+    @ApiOperation(value = "authenticate user then get the token to access resource")
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginForm loginRequest) {
 
