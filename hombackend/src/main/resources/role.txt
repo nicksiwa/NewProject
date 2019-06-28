@@ -1,0 +1,4 @@
+# command to insert role to table `roles`
+INSERT INTO roles(name) VALUES('ROLE_USER');
+INSERT INTO roles(name) VALUES('ROLE_PM');
+INSERT INTO roles(name) VALUES('ROLE_ADMIN');
