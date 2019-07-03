@@ -1,10 +1,10 @@
 import React from 'react';
-import LoginComponent from '../components/auth'
+import LoginContainer from '../containers/auth/LoginContainer'
 
 const AuthenticationLayout = () => {
   return (
     <div className="auth">
-      <LoginComponent />
+      <LoginContainer />
     </div>
   );
 }

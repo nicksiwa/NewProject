@@ -12,6 +12,10 @@
 
 // Components
 @import './components/form.scss';
+@import './components/navbar.scss';
+
+// Override vendors css
+@import './vendors/ant-design/index.scss';
 
 * {
   font-family: $font-family;

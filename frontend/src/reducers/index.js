@@ -1,8 +1,14 @@
 import { combineReducers } from 'redux';
-import { reducer as formReducer } from 'redux-form'
+import { reducer as formReducer } from 'redux-form';
+import { connectRouter } from 'connected-react-router';
 import { todoReducer } from './todo';
+import { loginReducer } from './authentication';
+import { notificationReducer } from './notification';
 
-export default combineReducers({
+export default (history) => combineReducers({
+  router: connectRouter(history),
   todo: todoReducer,
-  form: formReducer
+  form: formReducer,
+  login: loginReducer,
+  notifucation: notificationReducer
 });

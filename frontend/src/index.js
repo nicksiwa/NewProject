@@ -1,15 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { ConnectedRouter } from 'connected-react-router';
 import 'antd/dist/antd.css';
 import './assets/styles/index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import store from './createStore';
+import { store, persistor, history } from './createStore';
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <PersistGate loading={null} persistor={persistor}>
+      <ConnectedRouter history={history}>
+        <App />
+      </ConnectedRouter>
+    </PersistGate>
   </Provider>, document.getElementById('root')
 );
 

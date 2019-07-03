@@ -1,0 +1,15 @@
+.ant {
+  &-layout {
+    height: 100%;
+
+    &-header {
+      padding: 0;
+    }
+
+    &-content {
+      height: 100%;
+      margin: 20px 50px;
+    }
+  }
+}
+
