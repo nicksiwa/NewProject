@@ -1,7 +1,9 @@
 import React from 'react';
 import { Form, Icon, Button } from 'antd';
 import { Field } from 'redux-form';
-import { TextField } from '../shares/forms'
+import { Link } from 'react-router-dom';
+import { TextField } from '../shares/forms';
+import { ROUTE } from '../../constants/route';
 
 const LoginComponent = props => {
   const { handleSubmit } = props;
@@ -36,7 +38,7 @@ const LoginComponent = props => {
           </Button>
         </Form.Item>
         <Form.Item className="form-item --fluid">
-          Or <Button type="link" className="form-link">Register now</Button>
+          Or <Link to={ROUTE.REGISTER} type="link" className="form-link">Register now</Link>
         </Form.Item>
       </Form>
     </div>

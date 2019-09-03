@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { route } from '../constants/route';
+import { ROUTE } from '../constants/route';
 
 const PrivateRoute = ({component: Component, ...rest}) => {
   const { isAuthenticated } = rest;
@@ -12,7 +12,7 @@ const PrivateRoute = ({component: Component, ...rest}) => {
         props => isAuthenticated ?
           <Component {...props} />
           :
-          <Redirect to={{ pathname: route.login }} />
+          <Redirect to={{ pathname: ROUTE.LOGIN }} />
       }
     />
   );

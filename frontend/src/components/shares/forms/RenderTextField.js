@@ -9,6 +9,7 @@ export const RenderTextField = props => {
     type,
     meta: { error, touched }
   } = props;
+
   return (
     <Form.Item
       validateStatus={touched && error ? 'error' : ''}

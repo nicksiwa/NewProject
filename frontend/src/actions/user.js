@@ -14,13 +14,13 @@ const getUserInfoError = () => ({
   type: USER.GET_INFO_ERROR
 });
 
-export const getUserInfo = () => dispatch => {
-  dispatch(getUserInfoPending());
-  getUserInfoService().then(res => {
-    console.log(res);
-    dispatch(getUserInfoSuccess());
-  }).catch(err => {
-    console.log('GET_USER_INFO_ERROR', err);
+export const getUserInfo = () => async dispatch => {
+  try {
+    dispatch(getUserInfoPending());
+    const data = await getUserInfoService();
+    dispatch(getUserInfoSuccess(data));
+    console.log(data);
+  } catch (err) {
     dispatch(getUserInfoError());
-  });
+  }
 };

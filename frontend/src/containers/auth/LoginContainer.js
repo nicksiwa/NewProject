@@ -3,12 +3,12 @@ import { useDispatch } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import LoginComponent from '../../components/auth/LoginComponent';
 import { login } from '../../actions';
-import { validation } from '../../components/auth/helper/validation';
+import { validate } from '../../components/auth/helper/validation';
 
 const LoginComponentWithReduxForm = reduxForm({
   form: 'login',
-  validation,
-  enableReinitialize: true
+  validate,
+  enableReinitialize: true,
 })(LoginComponent);
 
 const LoginContainer = props => {

@@ -1,11 +1,11 @@
-import { LOGIN, LOGOUT } from '../constants/actionTypes';
+import { LOGIN, LOGOUT, SESSION } from '../constants/actionTypes';
 
 const initialState = {
   isAuthenticated: false,
   isLoading: false,
-  token: '',
-  username: '',
-  role: '',
+  token: null,
+  username: null,
+  role: null,
 }
 
 export const loginReducer = (state = initialState, action) => {
@@ -29,6 +29,19 @@ export const loginReducer = (state = initialState, action) => {
         username: null,
         role: null
       };
+    case SESSION.INCREASE_SESSION:
+      return {
+        ...state,
+        token: action.payload
+      }
+    case SESSION.SESSION_EXPIRED:
+      return {
+        isAuthenticated: false,
+        isLoading: false,
+        token: null,
+        username: null,
+        role: null
+      }
     default:
       return state;
   }

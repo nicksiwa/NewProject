@@ -1,26 +1,37 @@
 import axios from 'axios';
 import { config } from '../config';
 import { store } from '../createStore';
+import { sessionExpired, increaseSession } from '../actions';
 
 const service = axios.create({
   baseURL: config.BASE_API_URL
 });
 
-service.interceptors.response.use(res => {
-  return res;
-}, err => {
-  if (err.response.status === 401) {
-    console.log(err);
+const onRequestSuccess = config => {
+  const token = store.getState().login.token;
+  if (token) {
+    config.headers.Authorization = store.getState().login.token;
   }
-});
-
-const getToken = () => {
-  return store.getState().login.token;
+  return config;
 }
 
-service.interceptors.request.use(config => {
-  config.headers.Authorization = getToken();
-  return config;
-});
+const onRequestFail = err => {
+  return Promise.reject(err);
+}
+
+const onResponseSuccess = res => {
+  return res;
+}
+
+const onResponseFail = err => {
+  if (err.response.status === 401) {
+    store.dispatch(sessionExpired());
+  }
+  return Promise.reject(err);
+}
+
+service.interceptors.request.use(onRequestSuccess, onRequestFail);
+
+service.interceptors.response.use(onResponseSuccess, onResponseFail);
 
 export default service;

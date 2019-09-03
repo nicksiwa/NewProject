@@ -1,4 +1,4 @@
-export const validation = values => {
+export const validate = values => {
   const errors = {};
   if (!values.username) {
     errors.username = 'Please fill this field';
