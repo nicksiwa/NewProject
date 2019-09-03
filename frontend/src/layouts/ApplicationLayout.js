@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Layout } from 'antd';
 import { getUserInfo, logout } from '../actions';
 import Navbar from '../components/navbar/NavbarComponent';
+// import NotificationModal from '../components/shares/NotificationModal';
 
 const ApplicationLayout = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const ApplicationLayout = () => {
         ApplicationLayout
         {user}
       </Content>
+      {/* <NotificationModal /> */}
     </Layout>
   );
 }

@@ -1,7 +1,7 @@
 import { push } from 'connected-react-router';
 import { LOGIN, LOGOUT, SESSION } from '../constants/actionTypes';
 import { loginService } from '../services';
-import { notifySessionExpired } from './notification';
+import { notifySessionExpired, invalidUser, closeNotification } from './notification';
 
 const loginPending = () => ({
   type: LOGIN.PENDING
@@ -35,10 +35,11 @@ export const login = data => async dispatch => {
   try {
     const res = await loginService(data);
     dispatch(loginSuccess(res.data));
+    dispatch(closeNotification());
     dispatch(push('/'));
   } catch (err) {
     dispatch(loginError(err));
-    console.log('LOGIN_ACTION_ERROR', err);
+    dispatch(invalidUser());
   }
 }
 

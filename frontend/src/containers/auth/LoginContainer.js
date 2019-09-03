@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import LoginComponent from '../../components/auth/LoginComponent';
 import { login } from '../../actions';
@@ -12,11 +12,16 @@ const LoginComponentWithReduxForm = reduxForm({
 })(LoginComponent);
 
 const LoginContainer = props => {
+  const notification = useSelector(state => state.notification);
   const dispatch = useDispatch();
   const onSubmit = data => dispatch(login(data));
 
   return (
-    <LoginComponentWithReduxForm {...props} onSubmit={onSubmit} />
+    <LoginComponentWithReduxForm
+      {...props}
+      onSubmit={onSubmit}
+      notification={notification}
+    />
   );
 }
 

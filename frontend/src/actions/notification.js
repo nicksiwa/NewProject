@@ -7,3 +7,7 @@ export const notifySessionExpired = () => ({
 export const closeNotification = () => ({
   type: NOTIFICATION.CLOSE
 });
+
+export const invalidUser = () => ({
+  type: NOTIFICATION.INVALID_USER
+});

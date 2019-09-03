@@ -1,16 +1,24 @@
 import React from 'react';
-import { Form, Icon, Button } from 'antd';
+import { Form, Icon, Button, Alert } from 'antd';
 import { Field } from 'redux-form';
 import { Link } from 'react-router-dom';
 import { TextField } from '../shares/forms';
 import { ROUTE } from '../../constants/route';
 
 const LoginComponent = props => {
-  const { handleSubmit } = props;
+  const { handleSubmit, notification } = props;
 
   return (
     <div className="auth-card">
       <p className="auth-title">Login</p>
+      {notification.isActive &&
+        <Alert
+          message={notification.type === 'success' ? "Success" : "Error"}
+          description={notification.message}
+          type={notification.type}
+          showIcon
+        />
+      }
       <Form onSubmit={handleSubmit}>
         <Form.Item>
           <Field

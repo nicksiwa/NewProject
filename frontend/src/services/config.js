@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { config } from '../config';
 import { store } from '../createStore';
-import { sessionExpired, increaseSession } from '../actions';
+import { sessionExpired } from '../actions';
 
 const service = axios.create({
   baseURL: config.BASE_API_URL
@@ -20,6 +20,7 @@ const onRequestFail = err => {
 }
 
 const onResponseSuccess = res => {
+  // store.dispatch(increaseSession(res.config.headers.Authorization));
   return res;
 }
 

@@ -10,5 +10,5 @@ export default (history) => combineReducers({
   todo: todoReducer,
   form: formReducer,
   login: loginReducer,
-  notifucation: notificationReducer
+  notification: notificationReducer
 });
