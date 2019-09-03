@@ -6,7 +6,11 @@ import { TextField } from '../shares/forms';
 import { ROUTE } from '../../constants/route';
 
 const LoginComponent = props => {
-  const { handleSubmit, notification } = props;
+  const {
+    handleSubmit,
+    notification,
+    onCloseNotification
+  } = props;
 
   return (
     <div className="auth-card">
@@ -16,7 +20,9 @@ const LoginComponent = props => {
           message={notification.type === 'success' ? "Success" : "Error"}
           description={notification.message}
           type={notification.type}
+          afterClose={onCloseNotification}
           showIcon
+          closable
         />
       }
       <Form onSubmit={handleSubmit}>

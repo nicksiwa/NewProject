@@ -1,6 +1,6 @@
 import { login, logout, increaseSession, sessionExpired } from './authentication';
 import { getUserInfo } from './user';
-import { notifySessionExpired } from './notification';
+import { notifySessionExpired, closeNotification } from './notification';
 
 export {
   login,
@@ -8,5 +8,6 @@ export {
   increaseSession,
   getUserInfo,
   notifySessionExpired,
-  sessionExpired
+  sessionExpired,
+  closeNotification
 };
